@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>Zoom responses</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
+function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
+}
+</script>
+<script src="data.js"></script>
+<!--<meta http-equiv="refresh" content="1" />-->
+</head>
+<body>
+    <br />
+    <div>
+        <canvas id="confusionMeter" width="300" height="300"></canvas>
+    </div>
+    <div>
+        <canvas id="myChart" width="300" height="300"></canvas>
+    </div>
+<script>
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+    type: type_spec,
+    data: {
+      labels: ["A", "B", "C", "D", "E"],
+      datasets: [{
+        //label: '# of Votes',
+        data: data_points,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255,99,132,1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(153, 102, 255, 1)',
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {legend: {display: false, },},
+      animation: 0,
+      responsive: false,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          suggestedMin: 0,
+          suggestedMax: 10,
+          grid: {drawOnChartArea: false}
+        },
+        x: {
+          grid: {drawOnChartArea: false}
+        }
+      }
+    }
+  });
+</script>
+<script>
+const labels = [
+  '-10',
+  '-9',
+  '-8',
+  '-7',
+  '-6',
+  '-5',
+  '-4',
+  '-3',
+  '-2',
+  '-1',
+  '0',
+];
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Confuse-o-meter',
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    //data: [0, 10, 5, 2, 20, 30, 45, 30, 20, 10],
+    data: confuse_points,
+  }]
+};
+const config = {
+  type: 'line',
+  data,
+options: {
+  animation: 0,
+  responsive: false,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      suggestedMin: 0,
+      suggestedMax: 10,
+      grid: {drawOnChartArea: false}
+    },
+    x: {
+      grid: {drawOnChartArea: false}
+    }
+  },
+}
+};
+var ConfusionMeter = new Chart(
+  document.getElementById('confusionMeter'),
+  config,
+);
+</script>
+
+<!--<input type="button" value="Capacity Chart" onclick="removeData(myChart);">-->
+</body>
+</html>
