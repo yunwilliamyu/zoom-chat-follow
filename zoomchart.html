@@ -1,6 +1,8 @@
 <html>
 <head>
     <title>Zoom responses</title>
+<style>
+</style>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 function addData(chart, label, data) {
@@ -31,6 +33,7 @@ function removeData(chart) {
         <canvas id="myChart" width="300" height="300"></canvas>
     </div>
 <script>
+  Chart.defaults.font.size = 14;
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
     type: type_spec,
@@ -40,11 +43,11 @@ function removeData(chart) {
         //label: '# of Votes',
         data: data_points,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
         ],
         borderColor: [
           'rgba(255,99,132,1)',
@@ -65,10 +68,10 @@ function removeData(chart) {
         y: {
           suggestedMin: 0,
           suggestedMax: 10,
-          grid: {drawOnChartArea: false}
+          grid: {drawOnChartArea: false, borderColor: 'rgb(0,0,0)'}
         },
         x: {
-          grid: {drawOnChartArea: false}
+          grid: {drawOnChartArea: false, borderColor: 'rgb(0,0,0)'}
         }
       }
     }
@@ -109,10 +112,10 @@ options: {
     y: {
       suggestedMin: 0,
       suggestedMax: 10,
-      grid: {drawOnChartArea: false}
+      grid: {drawOnChartArea: false, borderColor: 'rgb(0,0,0)'}
     },
     x: {
-      grid: {drawOnChartArea: false}
+      grid: {drawOnChartArea: false, borderColor: 'rgb(0,0,0)'}
     }
   },
 }
